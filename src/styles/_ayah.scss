@@ -1,0 +1,16 @@
+.surah {
+	display: grid;
+	place-items: center;
+	margin: 15px;
+	.ayah {
+		// @font-face {
+		// 	font-family: "Othmani";
+		// 	src: url("./font/Othmani.ttf");
+		// }
+		// font-family: "Othmani";
+		margin: 15px;
+		line-height: 2em;
+		font-size: 1.3em;
+		text-align: center;
+	}
+}
