@@ -11,5 +11,10 @@
 	margin: auto;
 }
 
+.title {
+	text-align: center;
+}
+
 @import "./ayah";
 @import "./player";
+@import "./modal";
