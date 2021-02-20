@@ -1,9 +1,10 @@
 import React from "react";
 import Library from "./Library";
-const Modal = () => {
+
+const Modal = ({ surah }) => {
 	return (
 		<div className="library">
-			<Library />
+			<Library surah={surah} />
 		</div>
 	);
 };
