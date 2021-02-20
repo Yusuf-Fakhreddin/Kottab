@@ -1,9 +1,9 @@
 import React from "react";
-import Surahs from "./Surahs";
+import Library from "./Library";
 const Modal = () => {
 	return (
 		<div className="library">
-			<Surahs />
+			<Library />
 		</div>
 	);
 };

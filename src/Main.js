@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
+//style
 import "./styles/app.scss";
 //Import Components
 import Player from "./components/Player";
@@ -8,18 +9,20 @@ import Modal from "./components/Modal";
 import { AyahContext } from "./contexts/AyahContext";
 
 function Main() {
-	const { currentAyah, changeAyah } = useContext(AyahContext);
+	const { currentAyah, changeAyah, sheikh } = useContext(AyahContext);
 
 	//Ref
 	const audioRef = useRef(null);
 
+	//states
 	const [ayah, setAyah] = useState(null);
-	// const [currentAyah, setCurrentAyah] = useState(1);
 	const [isPlaying, setIsPlaying] = useState(false);
+	const [modal, setModal] = useState(true);
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await httpService.get(
-				`http://api.alquran.cloud/v1/ayah/${currentAyah}/ar.alafasy`
+				`http://api.alquran.cloud/v1/ayah/${currentAyah}/${sheikh}`
 			);
 
 			console.log(result.data);
@@ -27,7 +30,7 @@ function Main() {
 			if (isPlaying) audioRef.current.play();
 		};
 		fetchData();
-	}, [currentAyah]);
+	}, [currentAyah, sheikh]);
 
 	const nextAyahHandler = async () => {
 		audioRef.current.pause();
@@ -37,12 +40,15 @@ function Main() {
 		}
 		return;
 	};
-
 	return (
 		<div className="App">
 			<Modal />
 			<div className="container">
-				{ayah ? <Ayah ayah={ayah.text} surah={ayah.surah} /> : "loading"}
+				{ayah ? (
+					<Ayah ayah={ayah.text} sheikh={sheikh} surah={ayah.surah} />
+				) : (
+					"loading"
+				)}
 				<Player
 					currentAyah={currentAyah}
 					audioRef={audioRef}
