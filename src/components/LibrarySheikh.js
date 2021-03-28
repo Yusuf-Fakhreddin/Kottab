@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { AyahContext } from "../contexts/AyahContext";
 
-const LibrarySurah = ({ name, englishName, identifier }) => {
+const LibrarySurah = ({ key, name, englishName, identifier }) => {
 	const { changeSheikh } = useContext(AyahContext);
+
 	return (
 		<div
 			className="library-element"

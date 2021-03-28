@@ -7,9 +7,10 @@ import Ayah from "./components/Ayah";
 import httpService from "./httpService";
 import Modal from "./components/Modal";
 import { AyahContext } from "./contexts/AyahContext";
+import Quality from "./components/Quality";
 
 function Main() {
-	const { currentAyah, changeAyah, sheikh } = useContext(AyahContext);
+	const { currentAyah, changeAyah, sheikh, quality } = useContext(AyahContext);
 
 	//Ref
 	const audioRef = useRef(null);
@@ -40,7 +41,7 @@ function Main() {
 			if (isPlaying) audioRef.current.play();
 		};
 		fetchData();
-	}, [currentAyah, sheikh]);
+	}, [currentAyah, sheikh, quality]);
 
 	const nextAyahHandler = async () => {
 		if (Number(currentAyah) < 6236) changeAyah(Number(currentAyah) + 1);
@@ -59,7 +60,7 @@ function Main() {
 		}
 	};
 	return (
-		<div className="App" onClick={handleClick}>
+		<div onClick={handleClick}>
 			{error ? (
 				<h1>{error}</h1>
 			) : (
@@ -75,7 +76,7 @@ function Main() {
 						{ayah ? (
 							<Ayah ayah={ayah.text} sheikh={sheikh} surah={ayah.surah} />
 						) : (
-							"loading"
+							<div className="loader"></div>
 						)}
 						<Player
 							currentAyah={currentAyah}
@@ -89,15 +90,22 @@ function Main() {
 								// onLoadedMetadata={timeUpdateHandler}
 								// onTimeUpdate={timeUpdateHandler}
 								ref={audioRef}
-								src={ayah.audio + "/low"}
+								src={ayah.audio + quality}
 								onEnded={nextAyahHandler}
 							></audio>
 						)}
+						<Quality />
 						<div className="btns">
-							<button className="btn" onClick={() => setModal("Sheikhs")}>
+							<button
+								className={`btn ${modal === "Sheikhs" ? "active" : null}`}
+								onClick={() => setModal("Sheikhs")}
+							>
 								Sheikhs
 							</button>
-							<button className="btn" onClick={() => setModal("Surahs")}>
+							<button
+								className={`btn ${modal === "Surahs" ? "active" : null}`}
+								onClick={() => setModal("Surahs")}
+							>
 								Surahs
 							</button>
 						</div>

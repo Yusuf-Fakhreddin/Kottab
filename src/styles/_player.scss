@@ -1,5 +1,6 @@
 .player {
 	min-height: 20vh;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -23,13 +24,19 @@
 }
 .play-control {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-items: center;
 	padding: 1rem;
 
 	width: 40%;
-	svg {
+	i {
+		padding: 15px;
 		cursor: pointer;
+	}
+	.fa-play,
+	.fa-pause {
+		border-radius: 50%;
+		background-color: #d3e0ea;
 	}
 }
 

@@ -8,6 +8,7 @@ class AyahContextProvider extends Component {
 		currentAyah: 1,
 		sheikh: "ar.abdulbasitmurattal",
 		sheikhName: "عبد الباسط عبد الصمد ",
+		quality: "",
 	};
 
 	changeAyah = (ayah) => {
@@ -15,6 +16,9 @@ class AyahContextProvider extends Component {
 	};
 	changeSheikh = (sheikh, sheikhName) => {
 		this.setState({ sheikh: sheikh, sheikhName: sheikhName });
+	};
+	changeQuality = (quality) => {
+		this.setState({ quality: quality });
 	};
 
 	render() {
@@ -24,6 +28,7 @@ class AyahContextProvider extends Component {
 					...this.state,
 					changeAyah: this.changeAyah,
 					changeSheikh: this.changeSheikh,
+					changeQuality: this.changeQuality,
 				}}
 			>
 				{/* value is the data we want to provide to what the themecontext.provider wraps */}

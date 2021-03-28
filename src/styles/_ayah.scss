@@ -2,6 +2,9 @@
 	display: grid;
 	place-items: center;
 	margin: 15px;
+	h1 {
+		font-size: 3em;
+	}
 	.ayah {
 		// @font-face {
 		// 	font-family: "Othmani";
@@ -10,7 +13,7 @@
 		// font-family: "Othmani";
 		margin: 15px;
 		line-height: 2em;
-		font-size: 1.3em;
+		font-size: 2em;
 		text-align: center;
 	}
 }
