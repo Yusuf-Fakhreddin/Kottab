@@ -6,7 +6,8 @@
 	box-sizing: border-box;
 }
 
-body {
+.body {
+	height: 100vh;
 	background-color: #f6f5f5;
 	color: #14143c;
 	height: 100vh;
@@ -25,6 +26,7 @@ body {
 }
 .btns,
 .quality-btns {
+	margin-bottom: 5px;
 	.btn {
 		padding: 15px;
 		margin: 0 10px;

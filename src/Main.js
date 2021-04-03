@@ -51,8 +51,6 @@ function Main() {
 		return;
 	};
 	const handleClick = (e) => {
-		// console.log(e.target);
-		// console.log(modalRef);
 		if (modalRef.current.contains(e.target) || e.target.nodeName === "I")
 			return;
 		else if (e.target.className !== "App" && e.target.nodeName !== "BUTTON") {
@@ -72,44 +70,44 @@ function Main() {
 							modal === "Sheikhs" && <Modal />
 						)}
 					</div>
-					<div className="container">
-						{ayah ? (
-							<Ayah ayah={ayah.text} sheikh={sheikh} surah={ayah.surah} />
-						) : (
-							<div className="loader"></div>
-						)}
-						<Player
-							currentAyah={currentAyah}
-							audioRef={audioRef}
-							isPlaying={isPlaying}
-							setIsPlaying={setIsPlaying}
-							setCurrentAyah={changeAyah}
-						/>
-						{ayah && (
-							<audio
-								// onLoadedMetadata={timeUpdateHandler}
-								// onTimeUpdate={timeUpdateHandler}
-								ref={audioRef}
-								src={ayah.audio + quality}
-								onEnded={nextAyahHandler}
-							></audio>
-						)}
-						<Quality />
-						<div className="btns">
-							<button
-								className={`btn ${modal === "Sheikhs" ? "active" : null}`}
-								onClick={() => setModal("Sheikhs")}
-							>
-								Sheikhs
-							</button>
-							<button
-								className={`btn ${modal === "Surahs" ? "active" : null}`}
-								onClick={() => setModal("Surahs")}
-							>
-								Surahs
-							</button>
-						</div>
-					</div>{" "}
+					<div className="body">
+						<div className="container">
+							{ayah ? (
+								<Ayah ayah={ayah.text} sheikh={sheikh} surah={ayah.surah} />
+							) : (
+								<div className="loader"></div>
+							)}
+							<Player
+								currentAyah={currentAyah}
+								audioRef={audioRef}
+								isPlaying={isPlaying}
+								setIsPlaying={setIsPlaying}
+								setCurrentAyah={changeAyah}
+							/>
+							{ayah && (
+								<audio
+									ref={audioRef}
+									src={ayah.audio + quality}
+									onEnded={nextAyahHandler}
+								></audio>
+							)}
+							<Quality />
+							<div className="btns">
+								<button
+									className={`btn ${modal === "Sheikhs" ? "active" : null}`}
+									onClick={() => setModal("Sheikhs")}
+								>
+									Sheikhs
+								</button>
+								<button
+									className={`btn ${modal === "Surahs" ? "active" : null}`}
+									onClick={() => setModal("Surahs")}
+								>
+									Surahs
+								</button>
+							</div>
+						</div>{" "}
+					</div>
 				</>
 			)}
 		</div>

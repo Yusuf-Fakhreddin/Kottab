@@ -4,7 +4,7 @@ import { AyahContext } from "../contexts/AyahContext";
 const Quality = () => {
 	const { changeQuality } = useContext(AyahContext);
 
-	const [active, setActive] = useState("");
+	const [active, setActive] = useState("Med");
 
 	return (
 		<div className="quality-btns">
